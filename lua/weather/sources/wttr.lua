@@ -1,6 +1,4 @@
 local curl = require("plenary.curl")
-local os = require("os")
-local util = require("weather.util")
 
 local result = {}
 
