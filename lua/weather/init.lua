@@ -28,6 +28,7 @@ end
 local function get_weather()
 	local result = wttr.get(function(data)
 		last_update = data
+		print("data", data)
 		for _, v in pairs(subscriptions) do
 			v(data)
 		end
