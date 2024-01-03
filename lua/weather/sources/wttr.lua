@@ -17,6 +17,7 @@ result.get_raw = function(callback)
 				})
 				return
 			end
+			print("body", response.body)
 			vim.schedule(function()
 				callback({
 					success = response.body,
