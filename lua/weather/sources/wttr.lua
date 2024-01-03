@@ -20,9 +20,8 @@ result.get_raw = function(callback)
 				return
 			end
 			vim.schedule(function()
-				local wttr_response = vim.fn.json_decode(response.body)
 				callback({
-					success = wttr_response,
+					success = response.body,
 				})
 			end)
 		end,
