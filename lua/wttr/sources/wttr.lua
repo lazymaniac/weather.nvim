@@ -34,7 +34,6 @@ result.get_forecast = function(location, callback)
 		url = "v3.wttr.in/Bayern.sxl",
 		callback = function(response)
 			vim.schedule(function()
-				print(response.body)
 				callback(response.body)
 			end)
 		end,
