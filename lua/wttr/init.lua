@@ -12,7 +12,6 @@ local function get_weather()
 	local result = wttr.get(function(data)
 		inc = inc + 1
 		weather.text = data .. inc
-		vim.notify(weather.text)
 
 		vim.schedule(function()
 			vim.api.nvim_command("redrawstatus")
