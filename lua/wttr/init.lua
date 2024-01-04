@@ -3,6 +3,7 @@
 local wttr_src = require("wttr.sources.wttr")
 local default_config = require("wttr.default_config").default
 local util = require("wttr.util")
+local notify = require("notify")
 
 local location = ""
 local wttr = {}
@@ -13,7 +14,6 @@ wttr.text = "Pending"
 local function get_weather(format, custom_format)
 	local result = wttr_src.get(location, format, custom_format, function(data)
 		wttr.text = data
-		print("data", data)
 		vim.schedule(function()
 			vim.api.nvim_command("redrawstatus")
 		end)
@@ -24,7 +24,7 @@ end
 function wttr.get_forecast()
 	local result = wttr_src.get_forecast(location, function(data)
 		vim.schedule(function()
-			vim.notify(data)
+			notify(data)
 		end)
 	end)
 	return result
