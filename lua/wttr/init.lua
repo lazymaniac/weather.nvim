@@ -38,7 +38,7 @@ wttr.setup = function(args)
 	if not timer then
 		timer = vim.loop.new_timer()
 		timer:start(0, default_config.update_interval, function()
-			get_weather(default_config.location, default_config.format, default_config.custom_format)
+			get_weather(default_config.format, default_config.custom_format)
 		end)
 	end
 end
