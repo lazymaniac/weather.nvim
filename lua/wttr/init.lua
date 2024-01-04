@@ -1,8 +1,8 @@
 -- weather.nvim: A nvim plugin to display current weather status
 -- Importing this module returns a set of functions which can access weather
-local wttr = require("weather.sources.wttr")
-local config = require("weather.default_config").default
-local util = require("weather.util")
+local wttr = require("wttr.sources.wttr")
+local config = require("wttr.default_config").default
+local util = require("wttr.util")
 
 local weather = {}
 
