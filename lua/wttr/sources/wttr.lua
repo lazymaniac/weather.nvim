@@ -8,9 +8,10 @@ result.get_raw = function(location, format, custom_format, callback)
 	if not util.is_empty(custom_format) then
 		format = custom_format
 	end
-	print("format", format)
+	local effective_url = "wttr.in/" .. location .. "?format=" .. format
+	print(effective_url)
 	curl.get({
-		url = "wttr.in/" .. location .. "?format=" .. format,
+		url = effective_url,
 		callback = function(response)
 			vim.schedule(function()
 				callback(response.body)
