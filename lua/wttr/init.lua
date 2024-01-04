@@ -11,6 +11,10 @@ local timer = nil
 local function get_weather()
 	local result = wttr.get(function(data)
 		weather.text = data
+
+		vim.schedule(function()
+			vim.api.nvim_command("redrawstatus")
+		end)
 	end)
 	return result
 end

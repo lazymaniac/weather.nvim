@@ -2,9 +2,7 @@ local curl = require("plenary.curl")
 
 local result = {}
 
--- Does a raw call to openweathermap, returning a table with either:
--- "success": formatted response string fetched from wttr.in
--- "failure": string with the error message
+-- Does a raw call to wttr with format query param and then returning a response
 result.get_raw = function(callback)
 	curl.get({
 		url = "wttr.in/?format=2",
@@ -16,7 +14,7 @@ result.get_raw = function(callback)
 	})
 end
 
--- Gets a Weather object for owm
+-- Gets a response from wttr
 result.get = function(callback)
 	result.get_raw(function(response)
 		callback(response)
