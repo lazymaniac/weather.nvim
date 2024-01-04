@@ -5,12 +5,13 @@ local config = require("wttr.default_config").default
 local util = require("wttr.util")
 
 local weather = {}
-
+local inc = 0
 local timer = nil
 
 local function get_weather()
 	local result = wttr.get(function(data)
-		weather.text = data
+		inc = inc + 1
+		weather.text = data .. inc
 
 		vim.schedule(function()
 			vim.api.nvim_command("redrawstatus")
