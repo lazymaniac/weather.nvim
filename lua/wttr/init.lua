@@ -10,7 +10,7 @@ local timer = nil
 
 wttr.text = "Pending"
 
-local function get_weather(location, format, custom_format)
+local function get_weather(format, custom_format)
 	local result = wttr_src.get(location, format, custom_format, function(data)
 		wttr.text = data
 
