@@ -6,35 +6,16 @@ local util = require("weather.util")
 
 local weather = {}
 
-local subscriptions = {}
 local timer = nil
-
-local last_update = nil
--- Subscribes to weather updates.
--- - id (any): A unique id to register the listener with. Must be used with `unsubscribe`
--- - callback (function(WeatherResult)): A callback for when weather is fetched. May be called immediately if weather is cached already.
-weather.subscribe = function(id, callback)
-	assert(subscriptions[id] == nil, "Subscribed to weather updates with existing id: " .. id)
-	subscriptions[id] = callback
-	if last_update then
-		callback(last_update)
-	end
-end
-
-weather.unsubscribe = function(id)
-	table[id] = nil
-end
 
 local function get_weather()
 	local result = wttr.get(function(data)
-		last_update = data
-		print("data", data)
-		for _, v in pairs(subscriptions) do
-			v(data)
-		end
+		weather.text = data
 	end)
 	return result
 end
+
+weather.text = "Pending"
 
 -- Sets up the configuration and begins fetching weather.
 weather.setup = function(args)
