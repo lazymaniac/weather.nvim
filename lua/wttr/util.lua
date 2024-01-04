@@ -11,4 +11,9 @@ result.table_deep_merge = function(a, b)
 	end
 end
 
+-- Check if string empty
+result.is_empty = function(s)
+	return s == nil or s == ""
+end
+
 return result

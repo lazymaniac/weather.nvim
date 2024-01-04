@@ -1,11 +1,15 @@
 local curl = require("plenary.curl")
+local util = require("wttr.util")
 
 local result = {}
 
 -- Does a raw call to wttr with format query param and then returning a response
 result.get_raw = function(location, format, custom_format, callback)
+	if not util.is_empty(custom_format) then
+		format = custom_format
+	end
 	curl.get({
-		url = "wttr.in/?format=" .. format,
+		url = "wttr.in/" .. location .. "?format=" .. format,
 		callback = function(response)
 			vim.schedule(function()
 				callback(response.body)
@@ -17,7 +21,8 @@ end
 -- Gets a response from wttr
 result.get = function(location, format, custom_format, callback)
 	result.get_raw(location, format, custom_format, function(response)
-		callback(response)
+		print(response.body)
+		callback(response.body)
 	end)
 end
 
