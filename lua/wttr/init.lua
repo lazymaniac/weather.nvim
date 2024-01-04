@@ -4,7 +4,7 @@ local wttr_src = require("wttr.sources.wttr")
 local default_config = require("wttr.default_config").default
 local util = require("wttr.util")
 
-local config = {}
+local location = ""
 local wttr = {}
 local timer = nil
 
@@ -23,7 +23,7 @@ local function get_weather(location, format, custom_format)
 end
 
 function wttr.get_forecast()
-	local result = wttr_src.get_forecast(config.location, function(data)
+	local result = wttr_src.get_forecast(location, function(data)
 		vim.schedule(function()
 			vim.notify(data)
 		end)
@@ -35,11 +35,11 @@ end
 wttr.setup = function(args)
 	-- Merge passed in args into the default config.
 	util.table_deep_merge(args or {}, default_config)
-	config = default_config
+	location = default_config.location
 	if not timer then
 		timer = vim.loop.new_timer()
-		timer:start(0, config.update_interval, function()
-			get_weather(config.location, config.format, config.custom_format)
+		timer:start(0, default_config.update_interval, function()
+			get_weather(default_config.location, default_config.format, default_config.custom_format)
 		end)
 	end
 end
