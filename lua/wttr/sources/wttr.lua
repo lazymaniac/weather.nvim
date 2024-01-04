@@ -25,7 +25,7 @@ end
 -- Gets a response from wttr
 result.get = function(location, format, custom_format, callback)
 	result.get_raw(location, format, custom_format, function(response)
-		callback(response.body)
+		callback(response)
 	end)
 end
 
