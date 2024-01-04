@@ -13,6 +13,7 @@ result.get_raw = function(location, format, custom_format, callback)
 	curl.get({
 		url = effective_url,
 		callback = function(response)
+			print("response:", response.body)
 			vim.schedule(function()
 				callback(response.body)
 			end)
