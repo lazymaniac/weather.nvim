@@ -72,7 +72,7 @@ function wttr.get_forecast()
 
 			local lines = {}
 			for s in data:gmatch("[^\r\n]+") do
-				string.gsub(s, "^O", "")
+				string.gsub(s, "%c", "")
 				table.insert(lines, s)
 			end
 
@@ -82,7 +82,7 @@ function wttr.get_forecast()
 			end)
 
 			-- set content
-			vim.api.nvim_buf_set_lines(popup.bufnr, 0, -1, false, lines)
+			vim.api.nvim_buf_set_lines(popup.bufnr, 0, 50, false, lines)
 		end)
 	end)
 	return result
