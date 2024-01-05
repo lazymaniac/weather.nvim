@@ -30,7 +30,7 @@ function wttr.get_forecast()
 					width = 50,
 					height = 80,
 				},
-				enter = false,
+				enter = true,
 				focusable = false,
 				zindex = 50,
 				relative = "editor",
