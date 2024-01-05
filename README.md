@@ -5,8 +5,11 @@ A mix of 'wyattjsmith1/weather.nvim' and 'ellisonleao/weather.nvim'
 A simple plugin to display weather in nvim.
 
 [`lualine`](https://github.com/nvim-lualine/lualine.nvim) integration
+
 ![screenshot](https://github.com/lazymaniac/wttr.nvim/blob/main/example/lualine.jpg)
-Weather report popup
+
+Weather report popup with [`nui.nvim`](https://github.com/MunifTanjim/nui.nvim)
+
 ![screenshot](https://github.com/lazymaniac/wttr.nvim/blob/main/example/popup.jpg)
 
 ## Installation
