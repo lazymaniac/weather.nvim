@@ -51,15 +51,15 @@ function wttr.get_forecast()
 					},
 					style = "rounded",
 					text = {
-						top = " I am top title ",
+						top = " Weather forecast ",
 						top_align = "center",
-						bottom = "I am bottom title",
+						bottom = " Powered by wttr.in ",
 						bottom_align = "left",
 					},
 				},
 				buf_options = {
-					modifiable = true,
-					readonly = false,
+					modifiable = false,
+					readonly = true,
 				},
 				win_options = {
 					winblend = 10,
@@ -75,7 +75,7 @@ function wttr.get_forecast()
 			end)
 
 			-- set content
-			vim.api.nvim_buf_set_lines(popup.bufnr, 0, 1, false, { data })
+			vim.api.nvim_buf_set_lines(popup.bufnr, 0, -1, false, data)
 		end)
 	end)
 	return result
