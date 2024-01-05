@@ -49,7 +49,7 @@ function wttr.get_forecast()
 				},
 				buf_options = {
 					modifiable = false,
-					readonly = true,
+					readonly = false,
 				},
 				win_options = {
 					winblend = 0,
