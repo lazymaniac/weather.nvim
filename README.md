@@ -63,6 +63,7 @@ opts = {
 
   -- Custom format. If present then overwrites default format defined above
   --
+  -- Source: wttr.in
   -- To specify your own custom output format, use the special %-notation:
   --
   -- Possible options:
@@ -89,9 +90,6 @@ opts = {
   --     Z    Local timezone.
   --
   -- (*times are shown in the local timezone)
-  --
-  -- My config:
-  -- custom_format = '%C+%cP:%p+T:%t+F:%f+%w+%m+%P+UV:%u+Hum:%h'
   custom_format = ""
 }
 ```
