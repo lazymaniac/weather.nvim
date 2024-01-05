@@ -5,6 +5,7 @@ local default_config = require("wttr.default_config").default
 local util = require("wttr.util")
 local Popup = require("nui.popup")
 local event = require("nui.utils.autocmd").event
+
 local location = ""
 local wttr = {}
 local timer = nil
