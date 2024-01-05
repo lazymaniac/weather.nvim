@@ -23,10 +23,12 @@ use {
 }
 ```
 
+Lazy:
+
 ```lua
 {
   'lazymaniac/wttr.nvim',
-  dependecies = {
+  dependencies = {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
   }
