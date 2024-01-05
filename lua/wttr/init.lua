@@ -27,7 +27,7 @@ function wttr.get_forecast()
 			local popup = Popup({
 				position = "50%",
 				size = {
-					width = "80%",
+					width = "50%",
 					height = "80%",
 				},
 				enter = true,
@@ -60,14 +60,18 @@ function wttr.get_forecast()
 			})
 
 			-- key mappings
-			popup:map("n", "q", popup:unmount())
-			popup:map("n", "<esc>", popup:unmount())
+			popup:map("n", "q", function()
+				popup:unmount()
+			end)
+			popup:map("n", "<esc>", function()
+				popup:unmount()
+			end)
 
 			-- mount/open the component
 			popup:mount()
 
 			local lines = {}
-			for s in data:gmatch("[^\r\n%c]+") do
+			for s in data:gmatch("[^\r\n]+|[%c]+") do
 				print(s)
 				table.insert(lines, s)
 			end
