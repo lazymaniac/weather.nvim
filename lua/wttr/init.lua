@@ -42,10 +42,10 @@ function wttr.get_forecast()
 						right = 0,
 					},
 					style = "none",
-					text = {
-						bottom = " Powered by wttr.in ",
-						bottom_align = "right",
-					},
+					-- text = {
+					-- 	bottom = " Powered by wttr.in ",
+					-- 	bottom_align = "right",
+					-- },
 				},
 				buf_options = {
 					modifiable = false,
