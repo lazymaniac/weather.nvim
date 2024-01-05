@@ -96,6 +96,27 @@ opts = {
 }
 ```
 
+### My exmaple config
+
+```lua
+ {
+    'lazymaniac/wttr.nvim',
+    event = 'VeryLazy',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+    },
+    config = function(_, opts)
+      require('wttr').setup(opts)
+    end,
+    opts = {
+      location = '',
+      format = 1,
+      custom_format = '%C+%cP:%p+T:%t+F:%f+%w+%m+%P+UV:%u+Hum:%h',
+    },
+  },
+```
+
 ## Usage
 
 `wttr.nvim` starts a sheduler with periodic calls to `wttr.in`. Response is
