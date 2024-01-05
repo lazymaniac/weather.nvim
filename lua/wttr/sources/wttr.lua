@@ -11,7 +11,7 @@ result.get_raw = function(location, format, custom_format, callback)
 	end
 
 	local effective_url = "wttr.in/" .. location .. "?format=" .. effective_format
-
+	print("url:", effective_url)
 	curl.get({
 		url = effective_url,
 		callback = function(response)
