@@ -43,7 +43,7 @@ function wttr.get_forecast()
 					},
 					style = "solid",
 					text = {
-						bottom = " Powered by wttr.in ",
+						bottom = " by wttr.in ",
 						bottom_align = "right",
 					},
 				},
