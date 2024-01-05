@@ -28,7 +28,7 @@ function wttr.get_forecast()
 				position = "50%",
 				size = {
 					width = 74,
-					height = 40,
+					height = "80%",
 				},
 				enter = true,
 				focusable = false,
