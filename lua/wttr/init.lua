@@ -41,14 +41,14 @@ function wttr.get_forecast()
 						left = 1,
 						right = 1,
 					},
-					style = "none",
+					style = "single",
 					text = {
 						bottom = " Powered by wttr.in ",
 						bottom_align = "right",
 					},
 				},
 				buf_options = {
-					modifiable = true,
+					modifiable = false,
 					readonly = true,
 				},
 				win_options = {
@@ -80,7 +80,9 @@ function wttr.get_forecast()
 			end)
 
 			-- set content
-			vim.api.nvim_buf_set_lines(popup.bufnr, 0, 40, false, lines)
+			vim.api.nvim_buf_set_option(popup.bufnr, "modifiable", true)
+			vim.api.nvim_buf_set_lines(popup.bufnr, 0, 1, false, lines)
+			vim.api.nvim_buf_set_option(popup.bufnr, "modifiable", false)
 		end)
 	end)
 	return result
