@@ -27,7 +27,7 @@ function wttr.get_forecast()
 			local popup = Popup({
 				position = "50%",
 				size = {
-					width = 50,
+					width = 80,
 					height = 80,
 				},
 				enter = true,
