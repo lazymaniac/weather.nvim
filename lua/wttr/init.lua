@@ -71,7 +71,7 @@ function wttr.get_forecast()
 			popup:mount()
 
 			local lines = {}
-			for s in data:gmatch("[^\r\n]+|[%c]+") do
+			for s in data:gmatch("[^\r\n]+") do
 				print(s)
 				table.insert(lines, s)
 			end
