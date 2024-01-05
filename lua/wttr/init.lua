@@ -25,10 +25,10 @@ function wttr.get_forecast()
 	local result = wttr_src.get_forecast(location, function(data)
 		vim.schedule(function()
 			local popup = Popup({
-				position = "50%",
+				position = "70%",
 				size = {
 					width = 74,
-					height = "80%",
+					height = "90%",
 				},
 				enter = true,
 				focusable = false,
@@ -41,10 +41,8 @@ function wttr.get_forecast()
 						left = 1,
 						right = 1,
 					},
-					style = "rounded",
+					style = "none",
 					text = {
-						top = " Weather forecast ",
-						top_align = "center",
 						bottom = " Powered by wttr.in ",
 						bottom_align = "right",
 					},
