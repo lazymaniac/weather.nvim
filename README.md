@@ -106,9 +106,6 @@ opts = {
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
     },
-    config = function(_, opts)
-      require('wttr').setup(opts)
-    end,
     opts = {
       location = '',
       format = 1,
