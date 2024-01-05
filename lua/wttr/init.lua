@@ -27,11 +27,11 @@ function wttr.get_forecast()
 			local popup = Popup({
 				position = "50%",
 				size = {
-					width = "50%",
-					height = "80%",
+					width = 50,
+					height = 80,
 				},
-				enter = true,
-				focusable = true,
+				enter = false,
+				focusable = false,
 				zindex = 50,
 				relative = "editor",
 				border = {
@@ -46,7 +46,7 @@ function wttr.get_forecast()
 						top = " Weather forecast ",
 						top_align = "center",
 						bottom = " Powered by wttr.in ",
-						bottom_align = "left",
+						bottom_align = "right",
 					},
 				},
 				buf_options = {
@@ -72,8 +72,7 @@ function wttr.get_forecast()
 
 			local lines = {}
 			for s in data:gmatch("[^\r\n]+") do
-				print(s)
-				table.insert(lines, s)
+				table.insert(lines, s:gsub("^O", ""))
 			end
 
 			-- unmount component when cursor leaves buffer
