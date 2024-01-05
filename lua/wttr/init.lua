@@ -27,8 +27,8 @@ function wttr.get_forecast()
 			local popup = Popup({
 				position = "50%",
 				size = {
-					width = 75,
-					height = 60,
+					width = 74,
+					height = 40,
 				},
 				enter = true,
 				focusable = false,
@@ -82,7 +82,7 @@ function wttr.get_forecast()
 			end)
 
 			-- set content
-			vim.api.nvim_buf_set_lines(popup.bufnr, 0, 50, false, lines)
+			vim.api.nvim_buf_set_lines(popup.bufnr, 0, 40, false, lines)
 		end)
 	end)
 	return result
