@@ -24,7 +24,13 @@ end
 function wttr.get_forecast()
 	local result = wttr_src.get_forecast(location, function(data)
 		vim.schedule(function()
-			notify(data)
+			notify(data, "info", {
+				title = "Weather forecast",
+				on_open = function(win)
+					local buf = vim.api.nvim_win_get_buf(win)
+					vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+				end,
+			})
 		end)
 	end)
 	return result
