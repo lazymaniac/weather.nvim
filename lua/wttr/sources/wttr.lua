@@ -31,7 +31,7 @@ end
 
 result.get_forecast = function(location, callback)
 	curl.get({
-		url = "v3.wttr.in/Bayern.sxl",
+		url = "v3d.wttr.in/" .. location,
 		callback = function(response)
 			vim.schedule(function()
 				callback(response.body)
