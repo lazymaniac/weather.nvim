@@ -58,7 +58,7 @@ function wttr.get_forecast()
 					},
 				},
 				buf_options = {
-					modifiable = false,
+					modifiable = true,
 					readonly = true,
 				},
 				win_options = {
@@ -69,13 +69,18 @@ function wttr.get_forecast()
 			-- mount/open the component
 			popup:mount()
 
+			lines = {}
+			for s in data:gmatch("[^\r\n]+") do
+				table.insert(lines, s)
+			end
+
 			-- unmount component when cursor leaves buffer
 			popup:on(event.BufLeave, function()
 				popup:unmount()
 			end)
 
 			-- set content
-			vim.api.nvim_buf_set_lines(popup.bufnr, 0, -1, false, data)
+			vim.api.nvim_buf_set_lines(popup.bufnr, 0, -1, false, lines)
 		end)
 	end)
 	return result
