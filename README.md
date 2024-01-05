@@ -46,7 +46,7 @@ require'wttr'.setup {
 }
 ```
 
-A full configuration is listed below:
+Default configuration:
 
 ```lua
 opts = {
