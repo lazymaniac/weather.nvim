@@ -52,7 +52,7 @@ opts = {
   -- 
   -- Exmaple:
   -- location = "~Eiffel+Tower"
-  location = "Porto",
+  location = "",
  
   -- One of predefinied formats
   -- 1 - Preview: ☀️   +6°C
