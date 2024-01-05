@@ -25,7 +25,7 @@ function wttr.get_forecast()
 	local result = wttr_src.get_forecast(location, function(data)
 		vim.schedule(function()
 			local popup = Popup({
-				position = "50%",
+				-- position = "50%",
 				size = {
 					width = 74,
 					height = 43,
