@@ -143,3 +143,5 @@ Example:
 ```lua
 lua require'wttr'.get_forecast()
 ```
+
+To close popup press `q` or `<esc>`
