@@ -3,7 +3,6 @@
 local wttr_src = require("wttr.sources.wttr")
 local default_config = require("wttr.default_config").default
 local util = require("wttr.util")
-local notify = require("notify")
 local Popup = require("nui.popup")
 local event = require("nui.utils.autocmd").event
 local location = ""
@@ -25,18 +24,11 @@ end
 function wttr.get_forecast()
 	local result = wttr_src.get_forecast(location, function(data)
 		vim.schedule(function()
-			-- notify(data, "info", {
-			-- 	title = "Weather forecast",
-			-- 	on_open = function(win)
-			-- 		local buf = vim.api.nvim_win_get_buf(win)
-			-- 		vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
-			-- 	end,
-			-- })
 			local popup = Popup({
 				position = "50%",
 				size = {
-					width = 80,
-					height = 40,
+					width = "80%",
+					height = "80%",
 				},
 				enter = true,
 				focusable = true,
@@ -44,10 +36,10 @@ function wttr.get_forecast()
 				relative = "editor",
 				border = {
 					padding = {
-						top = 2,
-						bottom = 2,
-						left = 3,
-						right = 3,
+						top = 1,
+						bottom = 1,
+						left = 1,
+						right = 1,
 					},
 					style = "rounded",
 					text = {
@@ -62,15 +54,21 @@ function wttr.get_forecast()
 					readonly = true,
 				},
 				win_options = {
-					winblend = 10,
+					winblend = 0,
 					winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
 				},
 			})
+
+			-- key mappings
+			popup:map("n", "q", popup.unmount)
+			popup:map("n", "<esc>", popup.unmount)
+
 			-- mount/open the component
 			popup:mount()
 
-			lines = {}
+			local lines = {}
 			for s in data:gmatch("[^\r\n]+") do
+				print(s)
 				table.insert(lines, s)
 			end
 
