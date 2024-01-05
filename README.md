@@ -120,9 +120,9 @@ opts = {
 
 ## Usage
 
-`wttr.nvim` starts a sheduler with periodic calls to `wttr.in`. Response is
-extracted and saved in 'text' field. Use this filed in lualine or other place
-to display current weather.
+`wttr.nvim` starts a scheduler with periodic calls to `wttr.in`. Response is
+extracted and saved in 'text' field. Use this fieled in lualine or other place
+you want to display current weather.
 
 ## Integration with [`lualine`](https://github.com/nvim-lualine/lualine.nvim)
 
@@ -144,7 +144,7 @@ Call get_forecast() function to display popup with weather report
 Example:
 
 ```lua
-lua require'wttr'.get_forecast()
+:lua require'wttr'.get_forecast()
 ```
 
 To close popup press `q` or `<esc>`
