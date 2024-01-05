@@ -52,7 +52,7 @@ function wttr.get_forecast()
 					readonly = false,
 				},
 				win_options = {
-					winblend = 0,
+					winblend = 10,
 					winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
 				},
 			})
