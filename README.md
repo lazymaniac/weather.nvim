@@ -50,9 +50,12 @@ A full configuration is listed below:
 
 ```lua
 opts = {
-  -- If not provided then location will be found by IP. It can be other location
-  -- point like ~Eiffel+Tower  NOTE: ~ and + sign instead of space
-  -- 
+  -- If not provided then location will be found by IP. 
+  -- It can be other location point like:
+  -- ~Eiffel+Tower -  Note: ~ and + sign instead of space
+  -- @github.com - Domain name
+  -- muc - Three letter airport code
+  --
   -- Exmaple:
   -- location = "~Eiffel+Tower"
   location = "",
