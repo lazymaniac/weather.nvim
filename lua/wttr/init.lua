@@ -41,11 +41,11 @@ function wttr.get_forecast()
 						left = 1,
 						right = 1,
 					},
-					style = "none",
-					-- text = {
-					-- 	bottom = " Powered by wttr.in ",
-					-- 	bottom_align = "right",
-					-- },
+					style = "solid",
+					text = {
+						bottom = " Powered by wttr.in ",
+						bottom_align = "right",
+					},
 				},
 				buf_options = {
 					modifiable = false,
