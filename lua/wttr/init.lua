@@ -4,7 +4,8 @@ local wttr_src = require("wttr.sources.wttr")
 local default_config = require("wttr.default_config").default
 local util = require("wttr.util")
 local notify = require("notify")
-
+local Popup = require("nui.popup")
+local event = require("nui.utils.autocmd").event
 local location = ""
 local wttr = {}
 local timer = nil
@@ -24,13 +25,57 @@ end
 function wttr.get_forecast()
 	local result = wttr_src.get_forecast(location, function(data)
 		vim.schedule(function()
-			notify(data, "info", {
-				title = "Weather forecast",
-				on_open = function(win)
-					local buf = vim.api.nvim_win_get_buf(win)
-					vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
-				end,
+			-- notify(data, "info", {
+			-- 	title = "Weather forecast",
+			-- 	on_open = function(win)
+			-- 		local buf = vim.api.nvim_win_get_buf(win)
+			-- 		vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+			-- 	end,
+			-- })
+			local popup = Popup({
+				position = "50%",
+				size = {
+					width = 80,
+					height = 40,
+				},
+				enter = true,
+				focusable = true,
+				zindex = 50,
+				relative = "editor",
+				border = {
+					padding = {
+						top = 2,
+						bottom = 2,
+						left = 3,
+						right = 3,
+					},
+					style = "rounded",
+					text = {
+						top = " I am top title ",
+						top_align = "center",
+						bottom = "I am bottom title",
+						bottom_align = "left",
+					},
+				},
+				buf_options = {
+					modifiable = true,
+					readonly = false,
+				},
+				win_options = {
+					winblend = 10,
+					winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+				},
 			})
+			-- mount/open the component
+			popup:mount()
+
+			-- unmount component when cursor leaves buffer
+			popup:on(event.BufLeave, function()
+				popup:unmount()
+			end)
+
+			-- set content
+			vim.api.nvim_buf_set_lines(popup.bufnr, 0, 1, false, { data })
 		end)
 	end)
 	return result
