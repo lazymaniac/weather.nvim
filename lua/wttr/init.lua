@@ -60,8 +60,8 @@ function wttr.get_forecast()
 			})
 
 			-- key mappings
-			popup:map("n", "q", popup.unmount)
-			popup:map("n", "<esc>", popup.unmount)
+			popup:map("n", "q", popup:unmount())
+			popup:map("n", "<esc>", popup:unmount())
 
 			-- mount/open the component
 			popup:mount()
