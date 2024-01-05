@@ -14,7 +14,6 @@ wttr.text = "Pending"
 local function get_weather(format, custom_format)
 	local result = wttr_src.get(location, format, custom_format, function(data)
 		wttr.text = string.gsub(data, "%%", "")
-		print("text: ", wttr.text)
 		vim.schedule(function()
 			vim.api.nvim_command("redrawstatus")
 		end)
