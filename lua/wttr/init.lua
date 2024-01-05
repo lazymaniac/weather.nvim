@@ -72,6 +72,7 @@ function wttr.get_forecast()
 
 			local lines = {}
 			for s in data:gmatch("[^\r\n]+") do
+				string.gsub(s, "^O", "")
 				table.insert(lines, s:gsub("^O", ""))
 			end
 
