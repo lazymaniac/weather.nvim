@@ -1,5 +1,5 @@
 local wttr_src = require("wttr.sources.wttr")
-local default_config = require("wttr.default_config").default
+local default_config = require("wttr.default_config").opts
 local util = require("wttr.util")
 local Popup = require("nui.popup")
 local event = require("nui.utils.autocmd").event
