@@ -3,14 +3,23 @@ local util = require("wttr.util")
 
 local result = {}
 
--- Does a raw call to wttr with format query param and then returning a response
-result.get_raw = function(location, format, custom_format, callback)
+-- Gets a one-line weather report from wttr.in
+result.get_oneline = function(location, format, custom_format, units, lang, callback)
 	local effective_format = format
 	if not util.is_empty(custom_format) then
 		effective_format = custom_format
 	end
 
 	local effective_url = "wttr.in/" .. location .. "?format=" .. effective_format
+
+	if not util.is_empty(lang) then
+		effective_url = effective_url .. "&lang=" .. lang
+	end
+
+	if not util.is_empty(units) then
+		effective_url = effective_url .. "&" .. units
+	end
+
 	curl.get({
 		url = effective_url,
 		callback = function(response)
@@ -21,16 +30,24 @@ result.get_raw = function(location, format, custom_format, callback)
 	})
 end
 
--- Gets a response from wttr
-result.get = function(location, format, custom_format, callback)
-	result.get_raw(location, format, custom_format, function(response)
-		callback(response)
-	end)
-end
+-- Gets weather forecast for next few days
+result.get_forecast = function(type, location, units, lang, callback)
+	local effective_url = "v2d.wttr.in/" .. location .. "?T"
 
-result.get_forecast = function(location, callback)
+	if type == "classic" then
+		effective_url = effective_url .. "wttr.in/" .. location .. "?T"
+	end
+
+	if not util.is_empty(units) then
+		effective_url = effective_url .. "&" .. units
+	end
+
+	if not util.is_empty(lang) then
+		effective_url = effective_url .. "&lang=" .. lang
+	end
+
 	curl.get({
-		url = "v2d.wttr.in/" .. location .. "?T",
+		url = effective_url,
 		callback = function(response)
 			vim.schedule(function()
 				callback(response.body)
