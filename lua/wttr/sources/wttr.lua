@@ -32,10 +32,10 @@ end
 
 -- Gets weather forecast for next few days
 result.get_forecast = function(type, location, units, lang, callback)
-	local effective_url = "v2d.wttr.in/" .. location .. "?T"
+	local effective_url = "v2d.wttr.in/" .. location .. "?TF"
 
 	if type == "classic" then
-		effective_url = "wttr.in/" .. location .. "?T"
+		effective_url = "wttr.in/" .. location .. "?TF"
 	end
 
 	if not util.is_empty(units) then
