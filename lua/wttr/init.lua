@@ -37,7 +37,7 @@ function wttr.get_forecast(cutom_location)
 				table.insert(lines, s)
 			end
 
-			local classic_width = 123
+			local classic_width = 125
 			local rich_width = 74
 
 			local popup_width = rich_width -- fallback to rich text
